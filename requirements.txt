@@ -1,1 +1,3 @@
 datasets
+chromadb
+sentence-transformers
