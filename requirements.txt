@@ -1,3 +1,8 @@
 datasets
 chromadb
 sentence-transformers
+pydantic
+python-dotenv
+groq
+pandas
+sklearn
