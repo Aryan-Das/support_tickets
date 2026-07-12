@@ -98,7 +98,7 @@ def draft_response_agent(ticket_body : str):
     return {"status": "failed", "data": None}
 
 
-def parse_draft_response(response: str):
+def parse_draft_response(response):
     try:
         if response["data"] == "no_relevant_context_found":
             return None
