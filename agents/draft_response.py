@@ -89,7 +89,7 @@ def draft_response_agent(ticket_body : str):
                 temperature=0.1
             )
 
-            return {"status": "success", "data": response.choices[0].message.content}
+            return {"status": "success", "data": response.choices[0].message.content, "top_distance": sources[0]["distance"]}
         except RateLimitError as e:
             time.sleep(2.0)
             
