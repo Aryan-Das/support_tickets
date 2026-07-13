@@ -50,15 +50,27 @@ def draft_node(state: TicketState) -> dict:
     return {"draft_result": raw_result}
 
 def gate_decision_node(state: TicketState):
+    distance_threshold = 0.3
+    OUTAGE_ADJACENT_QUEUES = {
+        "Service Outages and Maintenance",
+        "Technical Support",
+        "IT Support",
+        "Product Support",
+    }
+
     if state["override_result"] is None:
         return {"final_status":"escalate", "final_reason":"override_parse_failed"}
     elif state["override_result"].triggered:
         return {"final_status":"escalate", "final_reason":"rule_override"}
+    elif (state["classifier_result"] 
+          and state["classifier_result"].priority == "high" 
+          and state["classifier_result"].queue in OUTAGE_ADJACENT_QUEUES):
+        return {"final_status": "escalate", "final_reason": "high_priority_outage"}
     elif state["draft_result"]["data"] is None:
         return {"final_status":"escalate", "final_reason":"draft_parse_failed"}
     elif state["draft_result"]["status"] == "escalate":
         return {"final_status":"escalate", "final_reason":"no_context"}
-    elif state["draft_result"]["top_distance"] >= 0.3:
+    elif state["draft_result"]["top_distance"] >= distance_threshold:
         return {"final_status":"escalate", "final_reason":"weak_retrieval_confidence"}
     else:
         return {"final_status":"auto_send", "final_output":state["draft_result"]["data"].draft_response}
