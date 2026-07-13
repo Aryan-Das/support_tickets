@@ -6,3 +6,4 @@ python-dotenv
 groq
 pandas
 sklearn
+langgraph

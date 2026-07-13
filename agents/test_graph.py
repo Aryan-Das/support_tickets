@@ -1,0 +1,6 @@
+from graph import build_graph
+
+app = build_graph()
+print(app.invoke({"ticket_body" : "Is there any information on the compatibility between Microsoft Teams and Kaspersky Internet Security 2021? I am currently using both and want to ensure they work seamlessly together. Could you please inform me about any known issues or conflicts between these two applications? I would appreciate any guidance or recommendations to ensure compatibility."}))
+print(app.invoke({"ticket_body" : "Dear Customer Support Team,\n\nI am reaching out to urgently highlight a severe security breach impacting our telehealth systems. Recently, we detected abnormal activities that could indicate a security intrusion, potentially jeopardizing confidential patient information and hindering service operations. Due to the vital importance of telehealth services, it is crucial that this issue is addressed without delay.\n\nWe kindly request a comprehensive investigation to determine the root cause and identify any vulnerabilities that may have been exploited."}))
+print(app.invoke({"ticket_body" : "What's the weather like on mars?"}))
