@@ -38,4 +38,8 @@ support_tickets/
 └── requirements.txt          
 ```
 
+## Known Limitations
+- Mislabeled data in the original dataset effects knowledge base and eval results
+- Low classifier accuracy in predicting the queue category of a ticket (as many are ambiguous)
+- Root cause analysis of both false positives (in the high_priority_outage override) and false negatives (missed escalations) traces back to this same issue
 
